@@ -13,11 +13,14 @@ jobs:
       - name: Node version
         run: node -v
         
+      - name: Files in public direcory
+        run: ls -la ./public
+        
       - name: Git clone my repo
         uses: actions/checkout@v3 
         
-      - name: ls -la 2
-        run: ls -la 
+      - name: Files in public direcory after pull
+        run: ls -la ./public
          
       - name: Install dependencies
         run: npm install
@@ -25,8 +28,13 @@ jobs:
       - name: Execute building
         run: npm run build
       
+      - name: Files in public direcory after build
+        run: ls -la ./public
+      
       - name: Push changes
         run: |
+          git config --global user.name "Action"
+          git config --global user.email "action@github.com"
           git add ./public/
-          git commit -m "generated1"
+          git commit -m "generated2"
           git push
