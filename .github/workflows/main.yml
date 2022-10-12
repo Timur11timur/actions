@@ -1,0 +1,26 @@
+name: Build-develop
+
+on:
+  push:
+    branches: 
+      - develop
+      
+jobs:
+  compile_css:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Node version
+			  uses: node -v
+        
+      - name: Git clone my repo
+			  uses: actions/checkout@v1 
+        
+      - name: ls -la
+			  uses: ls -la 
+         
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Execute building
+        run: npm run prod
