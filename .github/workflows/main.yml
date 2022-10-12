@@ -6,7 +6,7 @@ on:
     types: [closed]
       
 jobs:
-  compile_css1:
+  compile_public:
     runs-on: ubuntu-latest
     
     steps:
@@ -19,7 +19,7 @@ jobs:
       - name: Git clone my repo
         uses: actions/checkout@v3 
         
-      - name: Files in public direcory after pull
+      - name: Files in public directory after PULL
         run: ls -la ./public
          
       - name: Install dependencies
@@ -28,13 +28,13 @@ jobs:
       - name: Execute building
         run: npm run build
       
-      - name: Files in public direcory after build
+      - name: Files in public directory after BUILD
         run: ls -la ./public
       
       - name: Push changes
         run: |
           git config --global user.name "Action"
           git config --global user.email "action@github.com"
-          git add ./public/
-          git commit -m "generated2"
+          git add public
+          git commit -m "generated4"
           git push
