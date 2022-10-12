@@ -4,6 +4,11 @@ on:
   push:
     branches: 
       - develop
+  pull_request:
+    branches: 
+      - develop
+    types: 
+      - closed
       
 jobs:
   compile_css:
@@ -24,3 +29,10 @@ jobs:
       
       - name: Execute building
         run: npm run build
+      
+      - name: Push changes
+      - uses: actions/checkout@v3
+      - run: |
+          git add ./public/
+          git commit -m "generated"
+          git push
