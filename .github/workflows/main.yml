@@ -13,8 +13,8 @@ jobs:
       - name: Node version
         run: node -v
         
-      - name: Files in public direcory
-        run: ls -la ./public
+      - name: Files in root direcory
+        run: ls -la
         
       - name: Git clone my repo
         uses: actions/checkout@v3 
