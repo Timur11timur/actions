@@ -11,13 +11,16 @@ jobs:
     
     steps:
       - name: Node version
-			  uses: node -v
+	run: node -v
+        
+      - name: ls -la 1
+	run: ls -la 
         
       - name: Git clone my repo
-			  uses: actions/checkout@v1 
+	uses: actions/checkout@v1 
         
-      - name: ls -la
-			  uses: ls -la 
+      - name: ls -la 2
+	run: ls -la 
          
       - name: Install dependencies
         run: npm install
