@@ -36,6 +36,5 @@ jobs:
           git config --global user.name "Action"
           git config --global user.email "action@github.com"
           git add ./public
-          git add package-lock.json
           git commit -m "Compiling public"
           git push
