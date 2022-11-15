@@ -38,5 +38,4 @@ jobs:
           git add ./public
           git add package-lock.json
           git commit -m "Compiling public"
-          git diff --name-only
           git push
