@@ -36,5 +36,5 @@ jobs:
           git config --global user.name "Action"
           git config --global user.email "action@github.com"
           git add ./public
-          git commit -m "Compiling public"
+          git commit -m "generated5"
           git push
