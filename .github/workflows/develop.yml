@@ -12,16 +12,16 @@ jobs:
     
     steps:
       - name: Git clone my repo
-        uses: actions/checkout@v3 
-        
-      - name: Files in public directory after PULL
-        run: ls -la ./public
+        uses: actions/checkout@v3
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
          
       - name: Install dependencies
         run: composer install
+
+      - name: Generate key
+        run: php artisan key:generate
 
       - name: Give permissions
         run: chmod -R 777 storage bootstrap/cache
