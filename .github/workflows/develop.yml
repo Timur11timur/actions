@@ -1,0 +1,38 @@
+name: Build-develop
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+      
+jobs:
+  execute_tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Git clone my repo
+        uses: actions/checkout@v3 
+        
+      - name: Files in public directory after PULL
+        run: ls -la ./public
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+         
+      - name: Install dependencies
+        run: composer install
+
+      - name: Give permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: Create database
+        run: |
+            mkdir -p database
+            touch database/database.sqlite
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: vendor/bin/phpunit
